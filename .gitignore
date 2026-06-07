@@ -27,7 +27,12 @@ Thumbs.db
 # Project specific
 *.xlsx
 *.xml
-*.json
 output/
 testdata/
 .kilo/
+
+# Docker
+.docker/
+
+# Test
+.pytest_cache/
