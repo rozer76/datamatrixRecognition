@@ -2,6 +2,7 @@ import base64
 
 import cv2
 import numpy as np
+import uvicorn
 import zxingcpp
 from fastapi import FastAPI, Request
 from fastapi.responses import JSONResponse
@@ -13,18 +14,6 @@ app = FastAPI(title="DataMatrix Recognition API")
 class RecognizeRequest(BaseModel):
     file_data: str
     operation_uuid: str
-
-
-class RecognizeResponse(BaseModel):
-    operation_uuid: str
-    status: str
-    data: str = ""
-
-
-class ErrorResponse(BaseModel):
-    operation_uuid: str
-    status: str
-    message: str
 
 
 @app.get("/health")
@@ -96,3 +85,7 @@ async def generic_exception_handler(request: Request, exc: Exception):
             "message": err_message,
         },
     )
+
+
+if __name__ == "__main__":
+    uvicorn.run("main:app", host="0.0.0.0", port=8000)

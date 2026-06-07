@@ -179,6 +179,12 @@ pip install -r requirements.txt
 ### 2. Запуск сервера
 
 ```bash
+python app/main.py
+```
+
+Или через uvicorn напрямую:
+
+```bash
 uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
 ```
 
